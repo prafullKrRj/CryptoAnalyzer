@@ -11,7 +11,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.crypto.CryptoApplication
 import com.example.crypto.MainActivity
-import com.example.crypto.constants.Constants
 import com.example.crypto.data.CryptoRepository
 import com.example.crypto.model.coinDetail.CoinCompleteDetail
 import kotlinx.coroutines.launch

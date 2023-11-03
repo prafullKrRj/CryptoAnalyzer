@@ -6,19 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.crypto.ui.screens.detailScreen.CoinDetailScreen
 import com.example.crypto.ui.screens.listScreens.ListScreen
-import com.example.crypto.ui.screens.listScreens.ListScreenViewModel
 import com.example.crypto.ui.theme.CryptoTheme
 
 class MainActivity : ComponentActivity() {

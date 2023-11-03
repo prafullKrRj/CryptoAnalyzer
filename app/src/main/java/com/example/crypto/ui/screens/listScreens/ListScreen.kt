@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -45,7 +44,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.crypto.R
 import com.example.crypto.model.Coins.CryptoDetail
-import kotlin.math.exp
 
 @Composable
 fun ListScreen(
@@ -162,7 +160,10 @@ fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
 
 @Composable
 private fun AppBar() {
-    Row (Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
+    Row (
+        Modifier
+            .fillMaxWidth()
+            .padding(top = 8.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
         Image(painter = painterResource(id = R.drawable.logo), contentDescription = null, modifier = Modifier
             .size(60.dp)
             .clip(
@@ -173,7 +174,9 @@ private fun AppBar() {
 }
 @Composable
 fun ErrorScreen() {
-    Text(text = "Error")
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text(text = "Error!", fontSize = 28.sp, fontWeight = FontWeight.SemiBold)
+    }
 }
 
 @Composable
