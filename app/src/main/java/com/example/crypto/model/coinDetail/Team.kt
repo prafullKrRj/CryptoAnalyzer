@@ -1,10 +1,6 @@
 package com.example.crypto.model.coinDetail
 
-
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class TeamMembers(
+data class Team(
     val id: String,
     val name: String,
     val position: String

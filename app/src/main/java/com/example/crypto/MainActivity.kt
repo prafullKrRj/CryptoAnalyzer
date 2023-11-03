@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CryptoTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -35,12 +34,15 @@ class MainActivity : ComponentActivity() {
                     val navController: NavHostController = rememberNavController()
                     val startDestination = Screens.LIST_SCREEN.name
                     NavHost(navController = navController, startDestination = startDestination) {
+
                         composable(route = Screens.LIST_SCREEN.name) {
                             ListScreen(navController = navController, savedStateHandle)
                         }
+
                         composable(route = Screens.COIN_DETAIL_SCREEN.name) {
                             CoinDetailScreen(navController = navController, savedStateHandle)
                         }
+
                     }
                 }
             }

@@ -30,9 +30,7 @@ fun CoinDetailScreen(
         is CoinDetailState.Loading -> {
             LoadingScreen()
         }
-        is CoinDetailState.Success -> {
-            SuccessScreen(coinState.coinDetail)
-        }
+        is CoinDetailState.Success -> SuccessScreen(coinState.coinDetail)
     }
 }
 

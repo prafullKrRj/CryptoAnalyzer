@@ -1,8 +1,5 @@
 package com.example.crypto.model.coinDetail
 
-import kotlinx.serialization.Serializable
-
-@Serializable
 data class CoinCompleteDetail(
     val description: String,
     val development_status: String,
@@ -25,17 +22,7 @@ data class CoinCompleteDetail(
     val started_at: String,
     val symbol: String,
     val tags: List<Tag>,
-    val team: List<TeamMembers>,
+    val team: List<Team>,
     val type: String,
     val whitepaper: Whitepaper
 )
-fun CoinCompleteDetail.getCoin(): CoinDetail {
-    return CoinDetail(
-        description = description,
-        id = id,
-        isActive = is_active,
-        team = team,
-        rank = rank,
-        tags = tags
-    )
-}
