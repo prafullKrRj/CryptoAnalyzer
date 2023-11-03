@@ -83,8 +83,13 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
             .padding(horizontal = 16.dp)) {
             LazyColumn {
                 items(coins.size) { idx ->
-                    val coin = coins[idx]
-                    ListItemComposable(modifier = Modifier.padding(vertical = 10.dp), coin = coin, idx = idx+1)
+                    val coin = (coins[idx]).also {
+                        ListItemComposable(
+                            modifier = Modifier.padding(vertical = 4.dp),
+                            coin = it,
+                            idx = idx + 1
+                        )
+                    }
                 }
             }
         }
@@ -107,7 +112,7 @@ fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
             .clickable { }
-    ){
+    ) {
         Column (
             Modifier
                 .background(color = color)
