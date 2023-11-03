@@ -81,7 +81,7 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
             .padding(paddingValues)
             .padding(bottom = 16.dp)
             .padding(horizontal = 16.dp)) {
-            LazyColumn (){
+            LazyColumn {
                 items(coins.size) { idx ->
                     val coin = coins[idx]
                     ListItemComposable(modifier = Modifier.padding(vertical = 10.dp), coin = coin, idx = idx+1)
@@ -91,7 +91,6 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
     val status: String = if (coin.is_active) "active" else "inactive"
@@ -127,11 +126,15 @@ fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
                     .padding(vertical = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ){
-                Row (Modifier.weight(.72f), verticalAlignment = Alignment.CenterVertically){
+                Row (
+                    Modifier
+                        .weight(.72f)
+                        .padding(end = 4.dp), verticalAlignment = Alignment.CenterVertically){
                     Text(text = "${idx}.")
                     Spacer(modifier = Modifier.width(6.dp))
                     Column (verticalArrangement = Arrangement.Center){
                         Text(text = coin.name, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+                        Spacer(modifier = Modifier.width(3.dp))
                         Text(text = coin.symbol, fontSize = 14.sp)
                     }
                 }
