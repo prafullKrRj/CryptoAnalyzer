@@ -1,13 +1,15 @@
 package com.example.crypto.model.Coins
 
+import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-@Serializable
 data class CryptoDetail(
     val id: String,
-    @SerialName(value = "is_active") val is_active: Boolean,
-    @SerialName("is_new") val is_new: Boolean,
+    @SerializedName("is_active")
+    val isActive: Boolean,
+    @SerializedName("is_new")
+    val isNew: Boolean,
     val name: String,
     val rank: Int,
     val symbol: String,
@@ -19,6 +21,6 @@ fun CryptoDetail.getCoins(): Coins{
         symbol = symbol,
         id = id,
         rank = rank,
-        isActive = is_active
+        isActive = isActive
     )
 }

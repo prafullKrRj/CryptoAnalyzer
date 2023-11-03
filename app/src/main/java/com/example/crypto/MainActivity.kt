@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController: NavHostController = rememberNavController()
-                    val startDestination = Screens.LIST_SCREEN.name
+                        val startDestination = Screens.COIN_DETAIL_SCREEN.name
                     NavHost(navController = navController, startDestination = startDestination) {
 
                         composable(route = Screens.LIST_SCREEN.name) {
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable(route = Screens.COIN_DETAIL_SCREEN.name) {
-                            CoinDetailScreen(navController = navController, savedStateHandle)
+                            CoinDetailScreen()
                         }
 
                     }

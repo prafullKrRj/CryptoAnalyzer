@@ -93,7 +93,7 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
 
 @Composable
 fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
-    val status: String = if (coin.is_active) "active" else "inactive"
+    val status: String = if (coin.isActive) "active" else "inactive"
     var expanded by remember {
         mutableStateOf(false)
     }
