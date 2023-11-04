@@ -24,9 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.example.crypto.R
-import com.example.crypto.model.coinDetail.CoinCompleteDetail
 import com.example.crypto.model.coinDetail.TeamMember
 
 @Composable
@@ -50,7 +48,7 @@ fun TeamMembers(list: List<TeamMember>) {
         if (list.size > 4) {
             showIcon = true
             for (i in 1..4) {
-                OneTeamMember(teamMember = list[i])
+                OneTeamMember(teamMember = list[i-1])
                 Divider(
                     Modifier
                         .fillMaxWidth()
@@ -59,7 +57,7 @@ fun TeamMembers(list: List<TeamMember>) {
             }
         }
         if (isExpanded) {
-            var i: Int = 4
+            var i = 4
             while (i < list.size) {
                 OneTeamMember(teamMember = list[i])
                 Divider(
@@ -67,7 +65,7 @@ fun TeamMembers(list: List<TeamMember>) {
                         .fillMaxWidth()
                         .padding(vertical = 6.dp)
                         .height(2.dp))
-                i++;
+                i++
             }
         }
         if (showIcon) {
