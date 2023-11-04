@@ -43,6 +43,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.crypto.R
+import com.example.crypto.Screens
 import com.example.crypto.model.Coins.CryptoDetail
 
 @Composable
@@ -52,7 +53,7 @@ fun ListScreen(
 ) {
     val viewModel: ListScreenViewModel =
         viewModel(factory = ListScreenViewModel.Factory)
-    val listState = viewModel.listState
+    val listState: ListState = viewModel.listState
     when (listState) {
         is ListState.Success -> {
             MainScreen(coins = listState.details,
@@ -66,6 +67,9 @@ fun ListScreen(
         }
         is ListState.Loading -> {
             LoadingScreen()
+        }
+        else -> {
+            ErrorScreen()
         }
     }
 }
@@ -87,7 +91,8 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
                         ListItemComposable(
                             modifier = Modifier.padding(vertical = 4.dp),
                             coin = it,
-                            idx = idx + 1
+                            idx = idx + 1,
+                            navController = navController
                         )
                     }
                 }
@@ -97,7 +102,7 @@ fun MainScreen(coins: List<CryptoDetail>, modifier: Modifier, navController: Nav
 }
 
 @Composable
-fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
+fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int, navController: NavHostController) {
     val status: String = if (coin.isActive) "active" else "inactive"
     var expanded by remember {
         mutableStateOf(false)
@@ -111,7 +116,10 @@ fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int) {
         modifier = modifier
             .fillMaxWidth()
             .clip(shape = MaterialTheme.shapes.medium)
-            .clickable { }
+            .clickable {
+                navController
+                    .navigate(Screens.COIN_DETAIL_SCREEN.name + "/${coin.id}")
+            }
     ) {
         Column (
             Modifier

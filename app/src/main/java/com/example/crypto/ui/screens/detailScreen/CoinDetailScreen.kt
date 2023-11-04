@@ -19,24 +19,38 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.crypto.CryptoApplication
 import com.example.crypto.model.coinDetail.CoinCompleteDetail
 import com.example.crypto.ui.screens.listScreens.ErrorScreen
 import com.example.crypto.ui.screens.listScreens.LoadingScreen
 
 @Composable
-fun CoinDetailScreen() {
-    val viewModel: DetailScreenViewModel = viewModel(factory = DetailScreenViewModel.Factory)
-    val coinState = viewModel.coinDetailState
+fun CoinDetailScreen(coinId: String) {
+    val x = object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as CryptoApplication)
+                val cryptoRepository = application.container.cryptoDetailRepository
+                DetailScreenViewModel(cryptoRepository = cryptoRepository, coinId = coinId)
+            }
+        }
+    }
 
-    when (coinState) {
+    val viewModel: DetailScreenViewModel = viewModel(factory = x.Factory)
+    when (val coinState = viewModel.coinDetailState) {
         is CoinDetailState.Error -> {
             ErrorScreen()
         }
         is CoinDetailState.Loading -> {
             LoadingScreen()
         }
-        is CoinDetailState.Success -> SuccessScreen(coinState.coinDetail, Modifier.padding(16.dp))
+        is CoinDetailState.Success -> {
+            SuccessScreen(coinState.coinDetail, Modifier.padding(16.dp))
+        }
     }
 }
 

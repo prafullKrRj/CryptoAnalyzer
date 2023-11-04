@@ -11,6 +11,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.crypto.CryptoApplication
 import com.example.crypto.MainActivity
+import com.example.crypto.constants.Constants
 import com.example.crypto.data.CryptoRepository
 import com.example.crypto.model.coinDetail.CoinCompleteDetail
 import kotlinx.coroutines.launch
@@ -18,21 +19,19 @@ import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface CoinDetailState {
-    data class Success(val coinDetail: CoinCompleteDetail): CoinDetailState
+    data class Success(val coinDetail: CoinCompleteDetail, var id: String? = null): CoinDetailState
     object Error: CoinDetailState
     object Loading: CoinDetailState
 }
 class DetailScreenViewModel(
-    savedStateHandle: SavedStateHandle,
+    private val coinId: String,
     private val cryptoRepository: CryptoRepository
 ) : ViewModel () {
     var coinDetailState: CoinDetailState by mutableStateOf(CoinDetailState.Loading)
         private set
-
     init {
-        getCoinById("btc-bitcoin")
+        getCoinById(coinId = coinId)
     }
-
     private fun getCoinById(coinId: String) {
         viewModelScope.launch {
             coinDetailState = CoinDetailState.Loading
@@ -42,15 +41,6 @@ class DetailScreenViewModel(
                 CoinDetailState.Loading
             } catch (e: HttpException) {
                 CoinDetailState.Loading
-            }
-        }
-    }
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as CryptoApplication)
-                val cryptoRepository = application.container.cryptoDetailRepository
-                DetailScreenViewModel(cryptoRepository = cryptoRepository, savedStateHandle = MainActivity().savedStateHandle)
             }
         }
     }

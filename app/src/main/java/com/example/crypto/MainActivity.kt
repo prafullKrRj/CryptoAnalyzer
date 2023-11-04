@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.crypto.constants.Constants
 import com.example.crypto.ui.screens.detailScreen.CoinDetailScreen
 import com.example.crypto.ui.screens.listScreens.ListScreen
 import com.example.crypto.ui.theme.CryptoTheme
@@ -32,11 +33,13 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screens.LIST_SCREEN.name) {
                             ListScreen(navController = navController, savedStateHandle)
                         }
-
-                        composable(route = Screens.COIN_DETAIL_SCREEN.name) {
-                            CoinDetailScreen()
+                        composable(route = Screens.COIN_DETAIL_SCREEN.name + "/{${Constants.PARAM_COIN_ID}}") {
+                            it.arguments?.getString(Constants.PARAM_COIN_ID)?.let { it1 ->
+                                CoinDetailScreen(
+                                    coinId = it1
+                                )
+                            }
                         }
-
                     }
                 }
             }
