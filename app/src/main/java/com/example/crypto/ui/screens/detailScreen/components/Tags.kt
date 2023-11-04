@@ -4,7 +4,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,6 +25,7 @@ import com.example.crypto.model.coinDetail.CoinCompleteDetail
 fun Tags(coin: CoinCompleteDetail) {
     val tags = coin.tags
     Text(text = "Tags", fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+    Spacer(modifier = Modifier.height(6.dp))
     FlowRow (Modifier.fillMaxWidth()){
         tags.forEach { 
             Tag(tag = it.name)
