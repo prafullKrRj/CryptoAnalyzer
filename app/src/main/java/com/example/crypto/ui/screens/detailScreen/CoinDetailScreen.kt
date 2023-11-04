@@ -88,6 +88,7 @@ private fun SuccessScreen(coin: CoinCompleteDetail, modifier: Modifier) {
                 TeamMembers(list = coin.team)
             }
         }
+
     }
 }
 

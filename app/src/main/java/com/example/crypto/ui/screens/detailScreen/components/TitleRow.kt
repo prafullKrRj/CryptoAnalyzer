@@ -30,7 +30,7 @@ fun TitleRow(coin: CoinCompleteDetail) {
             )
             Spacer(modifier = Modifier.width(3.dp))
             Text(
-                text = coin.name,
+                text = coin.name + " (${coin.symbol})",
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp
             )
