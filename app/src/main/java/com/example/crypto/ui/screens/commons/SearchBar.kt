@@ -53,7 +53,11 @@ fun SearchField(
             Icon(imageVector = Icons.Default.Search, contentDescription = null)
         },
         trailingIcon = {
-                       IconButton(onClick = { onSearched(userSearch) }) {
+                       IconButton(onClick = {
+                           if (userSearch.isNotEmpty()) {
+                               onSearched(userSearch)
+                           }
+                       }) {
                            Icon(imageVector = Icons.Default.Send, contentDescription = null)
                        }
         },
@@ -61,7 +65,9 @@ fun SearchField(
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = {
             keyboardController?.hide()
-            onSearched(userSearch)
+            if (userSearch.isNotEmpty()) {
+                onSearched(userSearch)
+            }
         })
     )
 }
