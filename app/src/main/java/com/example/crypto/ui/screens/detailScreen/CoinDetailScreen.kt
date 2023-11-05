@@ -24,7 +24,6 @@ import com.example.crypto.model.coinDetail.CoinCompleteDetail
 import com.example.crypto.ui.screens.commons.ErrorScreen
 import com.example.crypto.ui.screens.commons.LoadingScreen
 import com.example.crypto.ui.screens.detailScreen.components.Description
-import com.example.crypto.ui.screens.detailScreen.components.DocumentComposable
 import com.example.crypto.ui.screens.detailScreen.components.OpenSource
 import com.example.crypto.ui.screens.detailScreen.components.Tags
 import com.example.crypto.ui.screens.detailScreen.components.TeamMembers
@@ -89,12 +88,6 @@ private fun SuccessScreen(coin: CoinCompleteDetail, modifier: Modifier){
             if (coin.team != null && !coin.team.isNullOrEmpty()) {
                 item {
                     TeamMembers(list = coin.team)
-                    MainScreenDivider(Modifier)
-                }
-            }
-            if (coin.whitepaper.link != null && coin.whitepaper.link.isNotEmpty()) {
-                item {
-                    DocumentComposable(coin.whitepaper.link)
                     MainScreenDivider(Modifier)
                 }
             }
