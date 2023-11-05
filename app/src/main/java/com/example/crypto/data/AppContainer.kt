@@ -1,9 +1,6 @@
 package com.example.crypto.data
 
 import com.example.crypto.network.CryptoApiService
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -13,8 +10,6 @@ interface AppContainer {
 class DefaultAppContainer: AppContainer {
     private val baseUrl =
         "https://api.coinpaprika.com/"
-
-    private var json = Json { ignoreUnknownKeys = true }
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())

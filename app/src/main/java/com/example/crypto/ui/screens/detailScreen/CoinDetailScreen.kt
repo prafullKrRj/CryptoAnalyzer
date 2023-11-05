@@ -79,11 +79,9 @@ private fun SuccessScreen(coin: CoinCompleteDetail, modifier: Modifier) {
                 MainScreenDivider(Modifier)
             }
         }
-        if (coin.whitepaper.link != null) {
-            item {
-                DocumentComposable(coin.whitepaper.link)
-                MainScreenDivider(Modifier)
-            }
+        item {
+            DocumentComposable(coin.whitepaper.link)
+            MainScreenDivider(Modifier)
         }
     }
 }

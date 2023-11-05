@@ -1,8 +1,7 @@
 package com.example.crypto.ui.theme
 
 import androidx.compose.ui.graphics.Color
-
-val Purple80 = Color(0xFFD0BCFF)
+/*
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
 
@@ -41,7 +40,7 @@ val md_theme_light_shadow = Color(0xFF000000)
 val md_theme_light_surfaceTint = Color(0xFF6750A4)
 val md_theme_light_outlineVariant = Color(0xFFCAC4D0)
 val md_theme_light_scrim = Color(0xFF000000)
-
+*/
 val md_theme_dark_primary = Color(0xFFD0BCFF)
 val md_theme_dark_onPrimary = Color(0xFF381E72)
 val md_theme_dark_primaryContainer = Color(0xFF4F378B)
@@ -68,10 +67,10 @@ val md_theme_dark_onSurfaceVariant = Color(0xFFCAC4D0)
 val md_theme_dark_inverseSurface = Color(0xFFE6E1E5)
 val md_theme_dark_inverseOnSurface = Color(0xFF313033)
 val md_theme_dark_inversePrimary = Color(0xFF6750A4)
-val md_theme_dark_shadow = Color(0xFF000000)
+//val md_theme_dark_shadow = Color(0xFF000000)
 val md_theme_dark_surfaceTint = Color(0xFFD0BCFF)
 val md_theme_dark_outlineVariant = Color(0xFF49454F)
 val md_theme_dark_scrim = Color(0xFF000000)
 
 
-val seed = Color(0xFF6750A4)
+// val seed = Color(0xFF6750A4)

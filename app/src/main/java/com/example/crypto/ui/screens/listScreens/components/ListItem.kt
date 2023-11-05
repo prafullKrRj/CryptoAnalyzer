@@ -33,10 +33,10 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.crypto.R
 import com.example.crypto.Screens
-import com.example.crypto.model.Coins.CryptoDetail
+import com.example.crypto.model.Coins.Coins
 
 @Composable
-fun ListItemComposable(modifier: Modifier, coin: CryptoDetail, idx: Int, navController: NavHostController) {
+fun ListItemComposable(modifier: Modifier, coin: Coins, idx: Int, navController: NavHostController) {
     val status: String = if (coin.isActive) "active" else "inactive"
     var expanded by remember {
         mutableStateOf(false)

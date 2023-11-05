@@ -18,7 +18,7 @@ sealed interface CoinDetailState {
     object Loading: CoinDetailState
 }
 class DetailScreenViewModel(
-    private val coinId: String,
+    coinId: String,
     private val cryptoRepository: CryptoRepository
 ) : ViewModel () {
     var coinDetailState: CoinDetailState by mutableStateOf(CoinDetailState.Loading)
