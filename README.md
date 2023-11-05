@@ -32,7 +32,7 @@ Here're some of the project's best features:
 
 <h2>🛠️ Installation Steps:</h2>
 
-<p>1. Download the APK file from the provided source.</p>
+<p>1. Download the APK file : - <a href="https://github.com/prafullKrRj/CryptoAnalyzer/raw/master/Crypto%20Analyzer.apk"> Click here: </a>  </p>
 
 <p>2. Install the application on your Android device.</p>
 
